@@ -3,6 +3,7 @@ import { Form, Input, Button, Select, Modal, Spin, Alert } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { createFeedback } from '../actions/feedbackActions'; // Assuming the path to feedbackActions is correct
 import { getCompanyDetails, listCategories } from '../actions/companyActions';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const { Option } = Select;
 
@@ -10,6 +11,7 @@ const FeedbackForm = ({ companyId }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const history = useHistory()
 
   const dispatch = useDispatch();
 
@@ -50,6 +52,8 @@ const FeedbackForm = ({ companyId }) => {
       setError(err.message || 'An error occurred');
     } finally {
       setLoading(false);
+      history.push('/dashboard');
+
     }
   };
 

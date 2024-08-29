@@ -1,11 +1,12 @@
 {
   "name": "muse-ant-design-dashboard",
-  "proxy": "https://feedbackhub.pythonanywhere.com",
-
+  "proxy": "https://feedbackhub.pythonanywhere.com/",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
+    "@mediapipe/camera_utils": "^0.3.1675466862",
+    "@mediapipe/face_mesh": "^0.4.1633559619",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",

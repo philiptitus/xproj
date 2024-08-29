@@ -2,7 +2,7 @@
 // import { useState } from "react";
 import { Menu, Button } from "antd";
 import { NavLink, useLocation } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/projectx.png";
 import { useDispatch } from "react-redux";
 import { logout } from '../../actions/authActions'
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -168,10 +168,10 @@ const dispatch = useDispatch()
     <>
       <div className="brand">
         <img src={logo} alt="" />
-        <span>rate my software</span>
+        <span>ProjectX</span>
       </div>
       <hr />
-      <Menu theme="light" mode="inline">
+      <Menu theme="dark" mode="inline">
         <Menu.Item key="1">
           <NavLink to="/dashboard">
             <span
@@ -186,7 +186,8 @@ const dispatch = useDispatch()
           </NavLink>
         </Menu.Item>
         <Menu.Item key="2">
-          <NavLink to="/tables">
+
+          <NavLink to="/myprofile">
             <span
               className="icon"
               style={{
@@ -195,7 +196,7 @@ const dispatch = useDispatch()
             >
               {tables}
             </span>
-            <span className="label">Registered Software</span>
+            <span className="label">My Profile</span>
           </NavLink>
         </Menu.Item>
   

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, Modal, Spin, Alert } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCompany } from '../actions/companyActions'; // Adjust the import path as needed
+import { PlusCircleOutlined } from '@ant-design/icons';
 
 const CreateWebsite = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -34,7 +35,7 @@ const CreateWebsite = () => {
   return (
     <div>
       <Button type="primary" onClick={showModal}>
-        Create Website
+        Create Website  <PlusCircleOutlined/>
       </Button>
       <Modal
         title="Create Website"

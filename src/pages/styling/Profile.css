@@ -1,0 +1,70 @@
+/* Profile Card Styling */
+.profile-card {
+  background: linear-gradient(135deg, #ff7f50, #ff6347);
+  color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-avatar {
+  border-radius: 50%;
+  border: 4px solid #fff;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+}
+
+.profile-details {
+  flex-grow: 1;
+}
+
+.profile-name {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.profile-email,
+.profile-location,
+.profile-join-date {
+  color: #ffe1d4;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.delete-account-button {
+  margin-top: 30px;
+  background-color: #e62e00;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+.delete-account-button:hover {
+  background-color: #cc2900;
+}
+
+/* Delete Modal Styling */
+.delete-modal .ant-modal-content {
+  background-color: #fff0e6;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.delete-modal .modal-title {
+  color: #ff6347;
+  margin-bottom: 20px;
+}
+
+.delete-modal .modal-description {
+  color: #333;
+}

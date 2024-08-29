@@ -12,6 +12,7 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
 import Tables from "./pages/Tables";
+import Profile from "./pages/Profile";
 
  import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
@@ -31,6 +32,8 @@ function App() {
         <Route path="/sign-in" exact component={SignIn} />
         <Main>
           <Route exact path="/dashboard" component={Home} />
+          <Route exact path="/myprofile" component={Profile} />
+
           <Route exact path="/tables" component={Tables} />
 
 

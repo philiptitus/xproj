@@ -29,7 +29,7 @@ import styled from "styled-components";
 import avtar from "../../assets/images/team-2.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { listNotifications } from "../../actions/notificationActions"; // Adjust the import as per your file structure
-
+import NewPostModal from './NewPostModal'
 
 const ButtonContainer = styled.div`
   .ant-btn-primary {
@@ -274,19 +274,10 @@ const dispatch = useDispatch()
 
   return (
     <>
-      <div className="setting-drwer" onClick={showDrawer}>
-        {setting}
-      </div>
+
       <Row gutter={[24, 0]}>
         <Col span={24} md={6}>
-          <Breadcrumb>
-            <Breadcrumb.Item>
-              <NavLink to="/">Pages</NavLink>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item style={{ textTransform: "capitalize" }}>
-              {name.replace("/", "")}
-            </Breadcrumb.Item>
-          </Breadcrumb>
+
           <div className="ant-page-header-heading">
             <span
               className="ant-page-header-heading-title"
@@ -298,15 +289,17 @@ const dispatch = useDispatch()
         </Col>
         <Col span={24} md={18} className="header-control">
           <Badge size="small" >
-            <Dropdown overlay={menu} trigger={["click"]}>
-              <a
-                href="#pablo"
-                className="ant-dropdown-link"
-                onClick={(e) => e.preventDefault()}
-              >
-                {bell}
-              </a>
-            </Dropdown>
+<NewPostModal/>
+          </Badge>
+
+
+
+
+
+        </Col>
+        <Col span={24} md={18} className="header-control">
+          <Badge size="small" >
+
           </Badge>
 
           <Button

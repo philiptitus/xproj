@@ -44,7 +44,7 @@ const FeedbackEditForm = ({ feedbackId }) => {
         {error && <Alert message={error} type="error" showIcon />}
         <Form onFinish={onFinish} layout="vertical">
           <Form.Item name="status" valuePropName="checked">
-            <Checkbox>Mark as Finished</Checkbox>
+            <Checkbox>We fixed This Issue✅</Checkbox>
           </Form.Item>
 
           <Form.Item>

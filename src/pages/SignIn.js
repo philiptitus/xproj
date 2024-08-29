@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../actions/authActions';
 import { Layout, Row, Col, Typography, Form, Input, Switch, Alert, Spin, Button } from 'antd';
 import { DribbbleOutlined, TwitterOutlined, InstagramOutlined, GithubOutlined } from '@ant-design/icons';
-import signinbg from '../assets/images/img-signin.jpg';
+import signinbg from '../assets/images/feed.jpg';
 
 const { Title } = Typography;
 const { Header, Footer, Content } = Layout;
