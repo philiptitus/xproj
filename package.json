@@ -1,6 +1,6 @@
 {
   "name": "muse-ant-design-dashboard",
-  "proxy": "https://projectxfoundation",
+  "proxy": "https://projectxfoundation.pythonanywhere.com",
   "version": "1.0.0",
   "private": true,
   "dependencies": {

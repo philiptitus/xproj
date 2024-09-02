@@ -39,7 +39,7 @@ const Home = () => {
           },
         };
         setLoading(true);
-        const response = await axios.get(`https://projectxfoundation/api/v1/posts/?page=${page}`, config);
+        const response = await axios.get(`https://projectxfoundation.pythonanywhere.com/api/v1/posts/?page=${page}`, config);
         if (response.data.results && response.data.results.length > 0) {
           setPosts((prevPosts) => [...prevPosts, ...response.data.results]);
           setTotalPages(response.data.total_pages);

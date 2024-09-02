@@ -93,7 +93,7 @@ const Social = ({ post, isTrash = false, isMessage = false }) => {
         <Meta
           avatar={
             <Badge dot offset={[5, 0]} color="green">
-              <Avatar src={`https://projectxfoundation.${post.user_avi}`} size={48} />
+              <Avatar src={`https://projectxfoundation.pythonanywhere.com.${post.user_avi}`} size={48} />
             </Badge>
           }
           title={

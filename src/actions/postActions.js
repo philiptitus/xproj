@@ -21,7 +21,7 @@ import {
 } from '../constants/postConstants';
 import axios from 'axios';
 
-const BASE_URL = 'https://projectxfoundation/api/v1/';
+const BASE_URL = 'https://projectxfoundation.pythonanywhere.com/api/v1/';
 
 export const listPostDetails = (id) => async (dispatch) => {
     try {

@@ -20,7 +20,7 @@ import {
 } from '../constants/userConstants'
 import axios from 'axios'
 
-const BASE_URL = 'https://projectxfoundation/api/v1/';
+const BASE_URL = 'https://projectxfoundation.pythonanywhere.com/api/v1/';
 
 export const login = (email, password) => async(dispatch) => {
     try{
