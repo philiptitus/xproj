@@ -41,7 +41,7 @@ const ChatModal = ({ visible, onClose, initialUser, user_id }) => {
             },
           };
           setLoading(true);
-          const response = await axios.get(`conversations/?page=${page}`, config);
+          const response = await axios.get(`https://projectxfoundation.pythonanywhere.com/api/v1/conversations/?page=${page}`, config);
 
           const newConversations = response.data.results.filter(
             (newChat) => !conversations.some((existingChat) => existingChat.id === newChat.id)

@@ -88,7 +88,7 @@ const NewPostModal = () => {
         </div>
         <Form form={form} layout="vertical" onFinish={handleSubmit}>
           <Form.Item
-            name="Title"
+            name="caption"
             label="Title"
             rules={[{ required: true, message: "Please input the title of the service you need!" }]}
           >

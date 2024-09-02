@@ -29,7 +29,7 @@ const ChatWindow = ({ user, userAvatar, id, onBack }) => {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-      const response = await axios.get(`chats/${id}/`, config);
+      const response = await axios.get(`https://projectxfoundation.pythonanywhere.com/api/v1/chats/${id}/`, config);
       const data = response.data;
 
       if (Array.isArray(data.results)) {

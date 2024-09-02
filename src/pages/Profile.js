@@ -25,7 +25,7 @@ const Profile = () => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     if (userInfo) {
       setUser({
-        avatar: `https://projectxfoundation.pythonanywhere.com${userInfo.avi}`,
+        avatar: `https://www.svgrepo.com/show/500470/avatar.svg`,
         name: userInfo.username,
         email: userInfo.email,
       });
