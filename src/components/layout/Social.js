@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-import { Card, Avatar, Typography, Button, Badge, Modal } from "antd";
+import React, { useState, useEffect } from "react";
+import { Card, Avatar, Typography, Button, Badge, Modal, Spin, message } from "antd";
 import { MessageOutlined, DeleteOutlined } from "@ant-design/icons";
-import ChatModal from "./ChatModal"; // Import the ChatModal component
+import ChatModal from "./ChatModal";
+import { useDispatch, useSelector } from "react-redux";
+import { deletePost, resetPostDelete } from "../../actions/postActions";
+import { POST_DELETE_RESET } from "../../constants/postConstants";
 
 const { Meta } = Card;
 const { Title, Paragraph } = Typography;
@@ -12,9 +15,24 @@ const fakeMessages = [
   { sender: "John Doe", content: "I need more information about the product.", timestamp: "10:35 AM" },
 ];
 
-const Social = ({ post, onDelete }) => {
+const Social = ({ post, isTrash = false, isMessage = false }) => {
   const [isChatModalVisible, setIsChatModalVisible] = useState(false);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+
+  const dispatch = useDispatch();
+  const postDelete = useSelector((state) => state.postDelete);
+  const { loading, error, success } = postDelete;
+
+  useEffect(() => {
+    if (success) {
+      message.success("Post deleted successfully!");
+      dispatch(resetPostDelete());
+    }
+    if (error) {
+      message.error(error);
+      dispatch(resetPostDelete());
+    }
+  }, [dispatch, success, error, post.id]);
 
   const showChatModal = () => {
     setIsChatModalVisible(true);
@@ -33,8 +51,8 @@ const Social = ({ post, onDelete }) => {
   };
 
   const handleDelete = () => {
-    onDelete(post.id); // Assuming post has an id property
-    closeDeleteModal();
+    dispatch(deletePost(post.id));
+    // Keep the modal open while loading
   };
 
   return (
@@ -49,42 +67,47 @@ const Social = ({ post, onDelete }) => {
           boxShadow: "0 8px 20px rgba(0, 0, 0, 0.15)",
           overflow: "hidden",
           position: "relative",
+          padding: "16px", // Added padding to create space around the content
         }}
-        actions={[
-          <Button icon={<MessageOutlined />} key="comment" onClick={showChatModal}>
-            Message Author
-          </Button>,
-        ]}
+        actions={
+          isMessage ? [
+            <Button icon={<MessageOutlined />} key="comment" onClick={showChatModal}>
+              Message Client
+            </Button>,
+          ] : []
+        }
       >
-        <DeleteOutlined
-          style={{
-            position: "absolute",
-            top: "16px",
-            right: "16px",
-            fontSize: "20px",
-            color: "#ff4d4f",
-            cursor: "pointer",
-          }}
-          onClick={showDeleteModal}
-        />
+        {isTrash && (
+          <DeleteOutlined
+            style={{
+              position: "absolute",
+              top: "16px",
+              right: "16px",
+              fontSize: "20px",
+              color: "#ff4d4f",
+              cursor: "pointer",
+            }}
+            onClick={showDeleteModal}
+          />
+        )}
         <Meta
           avatar={
             <Badge dot offset={[5, 0]} color="green">
-              <Avatar src={post.user_avi} size={48} />
+              <Avatar src={`https://projectxfoundation.${post.user_avi}`} size={48} />
             </Badge>
           }
           title={
-            <Title level={4} style={{ marginBottom: 0 }}>
+            <Title level={4} style={{ marginBottom: 0, fontSize: "small" }}>
               {post.user_name}
             </Title>
           }
           description={
             <>
               <Paragraph ellipsis={{ rows: 2, expandable: false }} style={{ fontWeight: "bold" }}>
-                {post.caption}
+                Job Title: {post.caption}
               </Paragraph>
               <Paragraph ellipsis={{ rows: 3, expandable: true }} style={{ color: "#595959" }}>
-                {post.description}
+                Job Description: {post.description}
               </Paragraph>
               <Paragraph>
                 <strong>Price:</strong> <span style={{ color: "#52c41a" }}>${post.price}</span>
@@ -104,6 +127,7 @@ const Social = ({ post, onDelete }) => {
 
       <ChatModal
         visible={isChatModalVisible}
+        user_id={post.user}
         onClose={closeChatModal}
         initialUser={{ user: post.user_name, userAvatar: post.user_avi, messages: fakeMessages }}
       />
@@ -115,6 +139,20 @@ const Social = ({ post, onDelete }) => {
         onCancel={closeDeleteModal}
         okText="Delete"
         cancelText="Cancel"
+        footer={[
+          <Button key="cancel" onClick={closeDeleteModal}>
+            Cancel
+          </Button>,
+          <Button
+            key="delete"
+            type="primary"
+            danger
+            onClick={handleDelete}
+            disabled={loading}
+          >
+            {loading ? <Spin /> : "Delete"}
+          </Button>,
+        ]}
       >
         <p>Are you sure you want to delete this post?</p>
       </Modal>

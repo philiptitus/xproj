@@ -1,88 +1,68 @@
-// store.js
-
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { composeWithDevTools } from 'redux-devtools-extension'
+import { 
+    postDetailsReducer, 
+    postUpdateReducer,
+    postDeleteReducer,
+    postCreateReducer, 
 
-// Importing the specific reducers
+
+
+
+} from './reducers/postReducers'
+import { 
+chatCreateReducer, messageDeleteReducer } from './reducers/notificationReducers'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import { 
     userLoginReducer,
-    userRegisterReducer,
+     userRegisterReducer,
+      userDetailsReducer,  
+        accountDeleteReducer,
+    } from './reducers/userReducers'
 
 
-} from './reducers/authReducers'
-
-import {
-    notificationListReducer,
-
-} from './reducers/notificationReducers'
-
-import {
-    feedbackListReducer,
-    feedbackDetailsReducer,
-    feedbackCreateReducer,
-    feedbackUpdateReducer,
-    feedbackDeleteReducer,
-} from './reducers/feedbackReducers'
-
-import {
-    companyListReducer,
-    companyDetailsReducer,
-    companyCreateReducer,
-    companyUpdateReducer,
-    companyDeleteReducer,
-    categoryListReducer,
-    metricsReducer
-} from './reducers/companyReducers'
-
-const reducer = combineReducers({
-    // Auth reducers
-    userLogin: userLoginReducer,
-    userRegister: userRegisterReducer,
-
-    // userList: userListReducer,
-    // userUpdate: userUpdateReducer,
-    // accountDelete: accountDeleteReducer,
-    // forgotPassword: forgotPasswordReducer,
-    // resetPassword: resetPasswordReducer,
-    // getOtp: getOtpReducer,
-    // verifyOtp: verifyOtpReducer,
-
-    // Notification reducers
-    notificationList: notificationListReducer,
-    categoryList: categoryListReducer,
+const reducer = combineReducers(
+    {
+        postDetails: postDetailsReducer,
+        postDelete: postDeleteReducer,
+        postCreate: postCreateReducer,
+        postUpdate: postUpdateReducer,
+    
 
 
-    // Feedback reducers
-    feedbackList: feedbackListReducer,
-    feedbackDetail: feedbackDetailsReducer,
-    feedbackCreate: feedbackCreateReducer,
-    feedbackUpdate: feedbackUpdateReducer,
-    feedbackDelete: feedbackDeleteReducer,
+        
+        userLogin: userLoginReducer,
+        userRegister: userRegisterReducer,
+        userDetails: userDetailsReducer,
+        accountDelete:accountDeleteReducer,
+      
 
-    // Company reducers
-    companyList: companyListReducer,
-    companyDetail: companyDetailsReducer,
-    companyCreate: companyCreateReducer,
-    companyUpdate: companyUpdateReducer,
-    companyDelete: companyDeleteReducer,
-    metrics: metricsReducer,
-})
+        chatCreate:chatCreateReducer,
+        messageDelete:messageDeleteReducer,
 
-const userInfoFromStorage = localStorage.getItem('userInfo')
-    ? JSON.parse(localStorage.getItem('userInfo'))
-    : null
 
-const initialState = {
-    userLogin: { userInfo: userInfoFromStorage },
+    }
+)
+
+
+
+
+
+
+const userInfoFromStorage = localStorage.getItem('userInfo') ?
+    JSON.parse(localStorage.getItem('userInfo')) : null
+
+
+
+const initialstate = {
+
+    userLogin: { userInfo: userInfoFromStorage }
+
 }
 
 const middleware = [thunk]
-
-const store = createStore(
-    reducer,
-    initialState,
+const store = createStore(reducer, initialstate, 
     composeWithDevTools(applyMiddleware(...middleware))
-)
+    )
 
 export default store

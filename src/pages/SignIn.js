@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../actions/authActions';
+import { login } from '../actions/userAction';
 import { Layout, Row, Col, Typography, Form, Input, Switch, Alert, Spin, Button } from 'antd';
 import { DribbbleOutlined, TwitterOutlined, InstagramOutlined, GithubOutlined } from '@ant-design/icons';
 import signinbg from '../assets/images/feed.jpg';
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 const { Header, Footer, Content } = Layout;
 
 const SignIn = () => {
@@ -94,16 +94,13 @@ const SignIn = () => {
                 </Form.Item>
 
                 <Form.Item className="align-center">
-                  <Switch checked={useDemoNormal} onChange={handleDemoNormalChange} /> USE DEMO NORMAL ACCOUNT
+                  <Switch checked={useDemoNormal} onChange={handleDemoNormalChange} /> USE DEMO ACCOUNT
                 </Form.Item>
-
-                <Form.Item className="align-center">
-                  <Switch checked={useDemoAdmin} onChange={handleDemoAdminChange} /> USE DEMO ADMIN ACCOUNT
-                </Form.Item>
+                {loading && <Spin />}
 
                 <Form.Item>
                   <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
-                    {loading ? <Spin /> : 'SIGN IN'}
+                    SIGN IN
                   </Button>
                 </Form.Item>
                 {error && <Alert message={error} type="error" />}
@@ -115,8 +112,17 @@ const SignIn = () => {
                 </p>
               </Form>
             </Col>
+
             <Col className="sign-img" style={{ padding: 12 }} xs={{ span: 24 }} lg={{ span: 12 }} md={{ span: 12 }}>
-              <img src={signinbg} alt="" />
+              <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                <Title level={1} style={{ color: '#FF4500', fontSize: '48px', margin: '0' }}>
+                  Project-X
+                </Title>
+                <Text style={{ color: '#FF6347', fontSize: '14px', fontStyle: 'italic' }}>
+                  Where Creativity Meets Opportunity
+                </Text>
+              </div>
+              <img src={signinbg} alt="Sign In Background" style={{ width: '100%', borderRadius: '8px' }} />
             </Col>
           </Row>
         </Content>

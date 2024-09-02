@@ -28,7 +28,6 @@ import { NavLink, Link } from "react-router-dom";
 import styled from "styled-components";
 import avtar from "../../assets/images/team-2.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { listNotifications } from "../../actions/notificationActions"; // Adjust the import as per your file structure
 import NewPostModal from './NewPostModal'
 
 const ButtonContainer = styled.div`
@@ -236,35 +235,15 @@ function Header({
 }) {
   const { Title, Text } = Typography;
 
-  const notificationList = useSelector((state) => state.notificationList);
-  const { loading, error, notifications } = notificationList;
+ 
 const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(listNotifications());
-  }, [dispatch]);
+
 
 
   const [visible, setVisible] = useState(false);
   const [sidenavType, setSidenavType] = useState("transparent");
 
-  const menu = (
-    <List
-      min-width="100%"
-      className="header-notifications-dropdown "
-      itemLayout="horizontal"
-      dataSource={notifications}
-      renderItem={(item) => (
-        <List.Item>
-          <List.Item.Meta
-            avatar={<Avatar shape="square" src={item.avatar} />}
-            title={item.title}
-            description={item.message}
-          />
-        </List.Item>
-      )}
-      
-    />
-  );
+
   
 
   useEffect(() => window.scrollTo(0, 0));
@@ -279,12 +258,12 @@ const dispatch = useDispatch()
         <Col span={24} md={6}>
 
           <div className="ant-page-header-heading">
-            <span
+            {/* <span
               className="ant-page-header-heading-title"
               style={{ textTransform: "capitalize" }}
             >
               {subName.replace("/", "")}
-            </span>
+            </span> */}
           </div>
         </Col>
         <Col span={24} md={18} className="header-control">
