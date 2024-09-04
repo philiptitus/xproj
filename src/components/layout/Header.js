@@ -29,6 +29,8 @@ import styled from "styled-components";
 import avtar from "../../assets/images/team-2.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import NewPostModal from './NewPostModal'
+import ChatListModal from "./ChatListModal";
+import ChatListButton from "./ChatListButton";
 
 const ButtonContainer = styled.div`
   .ant-btn-primary {
@@ -269,6 +271,16 @@ const dispatch = useDispatch()
         <Col span={24} md={18} className="header-control">
           <Badge size="small" >
 <NewPostModal/>
+          </Badge>
+
+
+
+
+
+        </Col>
+        <Col span={24} md={18} className="header-control">
+          <Badge size="small" >
+<ChatListButton/>
           </Badge>
 
 
